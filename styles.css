@@ -1,0 +1,112 @@
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom Utility for Image Mask */
+.mask-image-gradient {
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+/* --- Animations --- */
+
+/* Fade In Up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    filter: blur(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Background Fade (Image First) */
+@keyframes bgFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Utility Classes for Animation */
+.animate-fade-in-up {
+  opacity: 0;
+  /* Start hidden */
+  animation: fadeInUp 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--content-delay, 0s) + var(--delay, 0s));
+}
+
+.animate-bg-fade {
+  opacity: 0;
+  animation: bgFadeIn 1s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up,
+  .animate-bg-fade {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* Stagger Delays */
+.delay-200 {
+  --delay: 0.2s;
+}
+
+.delay-300 {
+  --delay: 0.3s;
+}
+
+.delay-700 {
+  --delay: 0.7s;
+}
+
+.delay-800 {
+  --delay: 0.8s;
+}
+
+.delay-900 {
+  --delay: 0.9s;
+}
+
+.delay-1200 {
+  --delay: 1.2s;
+}
+
+.delay-1300 {
+  --delay: 1.3s;
+}
+
+.delay-1400 {
+  --delay: 1.4s;
+}
+
+.accent-name {
+  position: relative;
+  color: #60a5fa;
+}
+
+.accent-name::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 6px;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(90deg, rgba(96, 165, 250, 0.35), rgba(125, 211, 252, 0.2));
+  filter: blur(8px);
+  z-index: -1;
+}
